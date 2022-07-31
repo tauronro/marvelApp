@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from 'src/app/services/home.service';
+import { ActivatedRoute } from '@angular/router';
+import { CharacterService } from 'src/app/services/api/character.service';
 
 @Component({
   selector: 'app-list',
@@ -7,16 +8,40 @@ import { HomeService } from 'src/app/services/home.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  currentSearch: string = '';
+  listHero: any[] = [];
 
   constructor(
-    private homeService: HomeService
+    private charService: CharacterService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params);
+        if (!!params && params.query) {
+          this.currentSearch = params.query;
+          this.sendSearch();
+        }
+      });
   }
 
   testHero() {
-    this.homeService.getHero().subscribe(res => console.log(res));
+    this.charService.getHero().subscribe(res => {
+      console.log(res)
+      this.listHero = res.data.results
+    });
   }
 
+  sendSearch() {
+    this.charService.searchHero(this.currentSearch).subscribe(res => {
+      console.log(res);
+      
+      this.listHero = res.data.results;
+    });
+  }
 }
+
+
+

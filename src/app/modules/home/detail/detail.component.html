@@ -1,2 +1,22 @@
-<p>detail works!</p>
+<mat-card class="example-card" *ngIf="!!detailHero">
+    <mat-card-title-group>
+        <mat-card-title>{{detailHero?.name}}</mat-card-title>
+        <img mat-card-xl-image [src]="detailHero?.thumbnail.path + '.' + detailHero?.thumbnail.extension">
+    </mat-card-title-group>
+    <mat-card-content>
+        
+        <ul>
+            <h3>Series</h3>
+            <li *ngFor="let comic of listComics">
+                {{comic.name}}
+            </li>
+        </ul>
+        <ul>
+            <h3>Comics</h3>
+            <li *ngFor="let storie of listStories">
+                {{storie.name}}
+            </li>
+        </ul>
 
+    </mat-card-content>
+</mat-card>

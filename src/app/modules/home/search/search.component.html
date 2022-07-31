@@ -1,5 +1,11 @@
-<div class="navbar">
-    
-        <img class="logo" src="assets/svg/logo.svg.png" alt="logo marvel">
-    
+<div class="input-search">
+        
+        <form [formGroup]="searchForm">
+                <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label>Buscar Heroes</mat-label>
+                        <input matInput type="text" name="searchControl" formControlName="search" (keyup.enter)="sendSearch()">
+                        
+                </mat-form-field>
+                <button mat-raised-button color="primary" class="button-search" (click)="sendSearch()">buscar</button>
+        </form>
 </div>
