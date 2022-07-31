@@ -1,0 +1,14 @@
+.no-content {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 160px);
+  min-width: 100%;
+
+  .no-content-text {
+    font-size: 50px;
+    font-weight: 700;
+    max-width: 280px;
+    text-align: center;
+  }
+}
