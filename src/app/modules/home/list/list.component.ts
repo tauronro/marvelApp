@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SpinnerVisibilityService } from 'ng-http-loader';
 import { CharacterService } from 'src/app/services/api/character.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private charService: CharacterService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private spinner: SpinnerVisibilityService
   ) { }
 
   ngOnInit(): void {
@@ -23,23 +25,27 @@ export class ListComponent implements OnInit {
         if (!!params && params.query) {
           this.currentSearch = params.query;
           this.sendSearch();
+        } else {
+          this.getHeroes();
         }
       });
   }
 
-  testHero() {
+  getHeroes() {
+    this.spinner.show();
     this.charService.getHero().subscribe(res => {
       console.log(res)
       this.listHero = res.data.results
-    });
+    }).add(() => this.spinner.hide());
   }
 
   sendSearch() {
+    this.spinner.show();
     this.charService.searchHero(this.currentSearch).subscribe(res => {
       console.log(res);
       
       this.listHero = res.data.results;
-    });
+    }).add(() => this.spinner.hide());
   }
 }
 

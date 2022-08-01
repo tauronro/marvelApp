@@ -23,7 +23,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   sendSearch() {
     const query = this.searchForm.controls['search'].value;
 

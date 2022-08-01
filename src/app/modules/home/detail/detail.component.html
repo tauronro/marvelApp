@@ -1,4 +1,10 @@
+<div class="button-back">
+    <button mat-raised-button color="primary" (click)="back()">
+        Regresar
+    </button>
+</div>
 <mat-card class="example-card" *ngIf="!!detailHero">
+    
     <mat-card-title-group>
         <mat-card-title>{{detailHero?.name}}</mat-card-title>
         <img mat-card-xl-image [src]="detailHero?.thumbnail.path + '.' + detailHero?.thumbnail.extension">
