@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CharacterService } from 'src/app/services/api/character.service';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +12,6 @@ export class SearchComponent implements OnInit {
   searchForm: FormGroup;
 
   constructor(
-    private charService: CharacterService,
     private router: Router
   ) {
     this.searchForm = new FormGroup({
@@ -26,10 +24,8 @@ export class SearchComponent implements OnInit {
   sendSearch() {
     const query = this.searchForm.controls['search'].value;
 
-    // se pone un if para restringir las busquedas a minimo 3 letras
-    if (query.length >= 3) {
-      this.router.navigate(['/characters'], { queryParams: { query: query } });
-    }
+      this.router.navigate(['/search/movie'], { queryParams: { query, page:1 } });
+
   }
 
 }

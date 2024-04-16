@@ -1,7 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://gateway.marvel.com:443',
-  hash: 'ed21b5306ceff85592f56d4dc1a9d6b7',
-  apiKey: '4aebae4aac20a7fbe93d00ffb6f53538',
-  ts: '1'
+  apiUrl: 'https://api.themoviedb.org/3',
+  apiKey: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMTQwNzFhNTQxMjJmYWJjNmRlY2IzYTVkMTI0OGM5OCIsInN1YiI6IjY2MWRkODc4MDgxNmM3MDE2M2VkODcyZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Df_im1T8mtXPJEFoW_Pl9bZ0rJI4BBzD3H3Ylf9kviQ'
 };

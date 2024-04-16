@@ -13,23 +13,18 @@ import { tap } from 'rxjs/operators';
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
   private apiKey = environment.apiKey;
-  private hash = environment.hash;
-  private ts = environment.ts;
 
   constructor() { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     console.log("entre al interceptor");
-    const token = sessionStorage.getItem('token');
 
     request = request.clone({
       setParams: {
-        apikey: this.apiKey,
-        hash: this.hash,
-        ts: this.ts
+        apikey: this.apiKey
       },
       setHeaders: {
-        Accept: '*/*'
+        Authorization: 'Bearer '+ this.apiKey
       }
     });
 

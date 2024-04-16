@@ -15,7 +15,7 @@ const routes: Routes = [
         path: '', component: ListComponent
       },
       {
-        path: ':idHeroe', component: DetailComponent
+        path: ':idMovie', component: DetailComponent
       }
     ]
   }

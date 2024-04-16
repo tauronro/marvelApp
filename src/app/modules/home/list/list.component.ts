@@ -10,7 +10,9 @@ import { CharacterService } from 'src/app/services/api/character.service';
 })
 export class ListComponent implements OnInit {
   currentSearch: string = '';
-  listHero: any[] = [];
+  numberPage: string;
+  listMovie: any[] = [];
+  searchMovie: any[] = [];
 
   constructor(
     private charService: CharacterService,
@@ -24,27 +26,29 @@ export class ListComponent implements OnInit {
         console.log(params);
         if (!!params && params.query) {
           this.currentSearch = params.query;
+          this.numberPage = params.page;
           this.sendSearch();
         } else {
-          this.getHeroes();
+          this.getMovies();
         }
       });
   }
 
-  getHeroes() {
+  getMovies() {
     this.spinner.show();
-    this.charService.getHero().subscribe(res => {
+    this.charService.getMovie().subscribe(res => {
       console.log(res)
-      this.listHero = res.data.results
+      this.listMovie = res.results
     }).add(() => this.spinner.hide());
   }
 
   sendSearch() {
     this.spinner.show();
-    this.charService.searchHero(this.currentSearch).subscribe(res => {
-      console.log(res);
-      
-      this.listHero = res.data.results;
+    this.charService.searchMovie(this.currentSearch, this.numberPage).subscribe(res => {
+      console.log(res,'search');
+
+      this.searchMovie = res.results;
+
     }).add(() => this.spinner.hide());
   }
 }

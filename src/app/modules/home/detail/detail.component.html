@@ -1,28 +1,43 @@
 <div class="button-back">
-    <button mat-raised-button color="primary" (click)="back()">
-        Regresar
-    </button>
+  <button mat-raised-button color="primary" (click)="back()">Regresar</button>
 </div>
-<mat-card class="example-card" *ngIf="!!detailHero">
-    
-    <mat-card-title-group>
-        <mat-card-title>{{detailHero?.name}}</mat-card-title>
-        <img mat-card-xl-image [src]="detailHero?.thumbnail.path + '.' + detailHero?.thumbnail.extension">
-    </mat-card-title-group>
-    <mat-card-content>
-        
-        <ul>
-            <h3>Series</h3>
-            <li *ngFor="let comic of listComics">
-                {{comic.name}}
-            </li>
-        </ul>
-        <ul>
-            <h3>Comics</h3>
-            <li *ngFor="let storie of listStories">
-                {{storie.name}}
-            </li>
-        </ul>
+<mat-card class="example-card" *ngIf="!!detailMovie">
+  <mat-card-title-group>
+    <mat-card-title>{{ detailMovie }}</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-content>
+    <ul>
+      <h3>Tiempo transcurrido de la pelicula</h3>
+      <li>
+        {{ list }}
+      </li>
+    </ul>
 
-    </mat-card-content>
+    <ul>
+      <h3>Fecha de lanzamiento</h3>
+      <li>
+        {{ date }}
+      </li>
+    </ul>
+
+    <ul>
+      <h3>Votacion</h3>
+      <li>
+        {{ vote }}
+      </li>
+    </ul>
+
+    <ul>
+      <h3>Generos de la pelicula</h3>
+      <li *ngFor="let genres of listGenres">
+        {{ genres.name }}
+      </li>
+    </ul>
+    <ul>
+      <h3>Compañias de producción</h3>
+      <li *ngFor="let storie of listCompanies">
+        {{ storie.name }}
+      </li>
+    </ul>
+  </mat-card-content>
 </mat-card>
